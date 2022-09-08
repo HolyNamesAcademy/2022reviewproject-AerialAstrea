@@ -14,7 +14,11 @@ public class ShapeMaker {
      */
     public static String PrintSquare(int size)
     {
-        return "";
+        String result = "";
+        for (int i = 0; i < size; i++) {
+            result += "* * * * *\n";
+        }
+        return result;
     }
 
     /**
@@ -31,8 +35,14 @@ public class ShapeMaker {
      */
     public static String PrintRectangle(int length, int height)
     {
-        // write your code here
-        return "";
+        String result = "";
+        for (int i = 0; i < height; i++) {
+            for(int j = 0; i < length; i++) {
+                result += "* ";
+            }
+            result += "\n";
+        }
+        return result;
     }
 
     /**
@@ -49,8 +59,14 @@ public class ShapeMaker {
      */
     public static String PrintRightTriangle(int height)
     {
-        // write your code here
-        return "";
+        String result = "";
+        for (int i = 0; i < height; i++) {
+            for(int j = height; i <= height; i++) {
+                result += "* ";
+            }
+            result += "\n";
+        }
+        return result;
     }
 
     /**
