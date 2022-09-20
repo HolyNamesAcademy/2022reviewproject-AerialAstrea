@@ -16,7 +16,13 @@ public class ShapeMaker {
     {
         String result = "";
         for (int i = 0; i < size; i++) {
-            result += "* * * * *\n";
+            for (int j = 0; j < size; j++) {
+                result += "*";
+                if (j != size-1) {
+                    result += " ";
+                }
+            }
+            result += "\n";
         }
         return result;
     }
@@ -37,8 +43,11 @@ public class ShapeMaker {
     {
         String result = "";
         for (int i = 0; i < height; i++) {
-            for(int j = 0; i < length; i++) {
-                result += "* ";
+            for(int j = 0; j < length; j++) {
+                result += "*";
+                if (j < length - 1) {
+                    result += " ";
+                }
             }
             result += "\n";
         }
@@ -61,8 +70,11 @@ public class ShapeMaker {
     {
         String result = "";
         for (int i = 0; i < height; i++) {
-            for(int j = height; i <= height; i++) {
-                result += "* ";
+            for(int j = 0; j <= i; j++) {
+                result += "*";
+                if (j < i) {
+                    result += " ";
+                }
             }
             result += "\n";
         }
@@ -81,10 +93,21 @@ public class ShapeMaker {
      * @param height the height of the triangle
      * @return a string that looks like the shape above when printed
      */
-    public static String PrintInvertedRightTriangle(int height)
+    public static String PrintInvertedRightTriangle(int height) 
     {
-        // write your code here
-        return "";
+        String result = "";
+    
+        for (int i = height; i > 0; i--) {
+            for (int j = 0; j < i; j ++) {
+                result += "*";
+                if (j < i -1) {
+                    result += " ";
+                }
+            }
+            result += "\n";
+        }
+
+        return result;
     }
 
     /**
@@ -102,8 +125,20 @@ public class ShapeMaker {
 
     public static String PrintBackwardsRightTriangle(int height)
     {
-        // write your code here
-        return "";
+        String result = "";
+        for (int i = 0; i < height; i++) {
+            for (int s = 0; s < height - i - 1; s++) {
+                result += "  ";
+            }
+            for (int m = 0; m <= i; m++) {
+                result += "*";
+                if (m < i) {
+                    result += " ";
+                }
+            }
+            result += "\n";
+        }
+        return result;
     }
 
     /**
@@ -120,7 +155,19 @@ public class ShapeMaker {
      */
     public static String PrintEquilateralTriangle(int height)
     {
-        // write your code here
-        return "";
+        String result = "";
+        for (int h = 0; h < height; h++) {
+            for (int b = 0; b < height - h - 1; b++) {
+                result += " ";
+            }
+            for (int m = 0; m <= h; m++) {
+                result += "*";
+                if (m < h) {
+                    result += " ";
+                }
+            }
+            result += "\n";
+        }
+        return result;
     }
 }
