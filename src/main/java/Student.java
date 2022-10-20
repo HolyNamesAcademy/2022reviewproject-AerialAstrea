@@ -32,6 +32,14 @@ public class Student {
     public void SetGradeLevel(int gradeLevel) { this.gradeLevel = gradeLevel; }
     public void SetFavoriteColor(String favoriteColor) { this.favoriteColor = favoriteColor; }
 
+    public int compareTo(Student other) {
+        if (this.gradeLevel != other.gradeLevel) {
+            return other.gradeLevel - this.gradeLevel;
+        }else {
+            return this.name.compareTo(other.name);
+        }
+    }
+    
     // define comparison
     public boolean equals(Object other) {
         // If points to the same object, return true

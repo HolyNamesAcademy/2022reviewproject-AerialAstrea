@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ArrayListPractice {
     /**
@@ -194,9 +195,9 @@ public class ArrayListPractice {
         for (int i = 0; i < teams.size(); i++) {
             ArrayList<Student> team = teams.get(i);
             result += "Team " + (i + 1) + ": ";
-            for (int j = 0; i < team.size(); i++) {
-                result += team.get(i).GetName();
-                if (team.get(j+1) != null) {
+            for (int j = 0; j < team.size(); j++) {
+                result += team.get(j).GetName();
+                if (j <= team.size()-2) { // should end
                     result += ", ";
                 }
             }
@@ -250,14 +251,15 @@ public class ArrayListPractice {
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
         // find the students with said name (first occurance)
         Student from = getStudent(students, fromStudentName);
-        Student to = getStudent(students, fromStudentName);
+        Student to = getStudent(students, toStudentName);
         // find the deposit num
-        double money = from.GetBankAccount().Withdraw(amount);
-        if (money == amount) {
-            to.GetBankAccount().Deposit(amount);
-            return true;
-        } 
-
+        if (from != null && to != null) {
+            double money = from.GetBankAccount().Withdraw(amount);
+            if (money == amount) {
+                to.GetBankAccount().Deposit(amount);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -278,9 +280,13 @@ public class ArrayListPractice {
      * @param students The list of students to advance to the next grade.
      */
     public static void UpdateGradeLevels(ArrayList<Student> students) {
-        for (int i = 0; i < students.size(); i++) {
+        for (int i = students.size() - 1; i >= 0; i--) {
             Student curr = students.get(i);
-            curr.SetGradeLevel(curr.GetGradeLevel() + 1);
+            if (curr.GetGradeLevel() <= 11) {
+                curr.SetGradeLevel(curr.GetGradeLevel() + 1);
+            } else {
+                students.remove(i);
+            }
         }
     }
 
@@ -293,13 +299,50 @@ public class ArrayListPractice {
      * @param students The list of students to sort.
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
-        students = SortByGradeAndName(students, new ArrayList<Student>());
+        for (int i = 0; i < students.size()-1; i++) {
+            if (students.get(i).compareTo(students.get(i+1)) < 0) {
+
+            }
+        }
+        while (i = 1) {
+            
+        }
     }
 
-    private static ArrayList<Student> SortByGradeAndName(ArrayList<Student> students, ArrayList<Student> curr) {
-        if (students != null) {
-            if (curr == null) {
-                
+    private class StudentTree {
+        private StudentNode overallTree;
+
+        public StudentNode(ArrayList<Student> students) {
+            overallTree = new 
+        }
+
+        public StudentNode add(Student student) {
+            
+        }
+
+        private class StudentNode implements Comparable<StudentNode>{
+            public Student root;
+            public Student left;
+            public Student right;
+            
+            public StudentNode(Student root) {
+                this(root, null, null);
+            }
+            
+            public StudentNode(Student root, Student right, Student left) {
+                this.root = root;
+                this.left = left;
+                this.right = right;
+            }
+            /*
+             * Post: A = this node, B = the other node
+             *       returns a negative value if the frequency of A < B, A pick first
+             *       returns zero if the frequency of A = B
+             *       returns a positive value if the frequency of A > B, B pick first
+             */
+            @Override
+            public int compareTo(StudentNode other) {
+                return this.compareTo(other);
             }
         }
     }

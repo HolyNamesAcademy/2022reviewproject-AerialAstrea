@@ -252,6 +252,9 @@ public class ArrayListPracticeTest {
         // Act
         boolean output = ArrayListPractice.TransferMoney(students, "Michael", "Madison", 80);
 
+    {
+
+        }
         // Assert
         assertEquals(50, students.get(3).GetBankAccount().GetBalance(), 0.1);
         assertEquals(110, students.get(5).GetBankAccount().GetBalance(), 0.1);
